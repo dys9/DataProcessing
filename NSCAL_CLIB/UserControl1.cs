@@ -43,9 +43,10 @@ namespace NSCAL_CLIB
 
                 double t = (X % Xstep) / Xstep;
 
-                if (xmi > 0 && xmi < Xmax &&
-                    xMi > 0 && xMi < Xmax &&
-                    ymi > 0 && ymi < Ymax)
+                if (xmi >= 0 && xmi < Xmax &&
+                    ymi >= 0 && ymi < Ymax &&
+                    xMi > 0 && xMi < Xmax
+                    )
                 {
                     double valm = arr[xmi, ymi];
                     double valM = arr[xMi, ymi];
@@ -58,15 +59,18 @@ namespace NSCAL_CLIB
             {
                 int xmi = (int)((X - D) / Xstep);
                 int ymi = (int)((Y - L) / Ystep);
-                int yMi = xmi + 1;
+                int yMi = ymi + 1;
 
-                double t = (Y % Xstep) / Ystep;
+                double t = ((Y % Ystep) / Ystep);
 
-                if (xmi > 0 && xmi < Xmax &&
-                    ymi > 0 && ymi < Ymax &&
-                    yMi > 0 && yMi < Ymax
-                    )
+                MessageBox.Show(xmi.ToString() + "\r\n" + ymi.ToString() + "\r\n" + yMi.ToString() + "\r\n" + Xmax + "\r\n" + Ymax);
+
+                if (xmi >= 0 && xmi < Xmax &&
+                    ymi >= 0 && ymi < Ymax &&
+                    yMi > 0 && yMi < Ymax)
                 {
+                    MessageBox.Show("hello");
+
                     double valm = arr[xmi, ymi];
                     double valM = arr[xmi, yMi];
 
@@ -82,15 +86,15 @@ namespace NSCAL_CLIB
                 int xMi = xmi + 1;
                 int yMi = ymi + 1;
 
-                if (xmi > 0 && xmi < Xmax &&
+                if (xmi >= 0 && xmi < Xmax &&
+                     ymi >= 0 && ymi < Ymax &&
                      xMi > 0 && xMi < Xmax &&
-                     ymi > 0 && ymi < Ymax &&
                      yMi > 0 && yMi < Ymax)
                 {
                     double valm = arr[xmi, ymi];
                     double valM = arr[xMi, yMi];
 
-                    result = 0;
+                    result = -999;
                 }
             }
             return result;
