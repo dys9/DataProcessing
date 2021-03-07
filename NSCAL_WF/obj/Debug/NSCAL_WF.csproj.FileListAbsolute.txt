@@ -1,0 +1,13 @@
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\bin\Debug\NSCAL_WF.exe.config
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\bin\Debug\NSCAL_WF.exe
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\bin\Debug\NSCAL_WF.pdb
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.csprojAssemblyReference.cache
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.Properties.Resources.resources
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.csproj.GenerateResource.cache
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.csproj.CoreCompileInputs.cache
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.exe
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.pdb
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\bin\Debug\NSCAL_CLIB.dll
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\bin\Debug\NSCAL_CLIB.pdb
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.Form1.resources
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_WF\obj\Debug\NSCAL_WF.csproj.CopyComplete

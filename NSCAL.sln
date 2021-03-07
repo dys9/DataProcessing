@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{68DF173E-BFD2-4351-881B-885208588E8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSCAL_WF", "NSCAL_WF\NSCAL_WF.csproj", "{FC884B4F-7951-4207-B594-2C414466CE5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSCAL_CLIB", "NSCAL_CLIB\NSCAL_CLIB.csproj", "{4B9D3A3B-C998-4318-80A8-30F58F49B715}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC884B4F-7951-4207-B594-2C414466CE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC884B4F-7951-4207-B594-2C414466CE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC884B4F-7951-4207-B594-2C414466CE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC884B4F-7951-4207-B594-2C414466CE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B9D3A3B-C998-4318-80A8-30F58F49B715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B9D3A3B-C998-4318-80A8-30F58F49B715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B9D3A3B-C998-4318-80A8-30F58F49B715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B9D3A3B-C998-4318-80A8-30F58F49B715}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E81D7E28-448C-4894-9C69-5AD86B95A53E}
+	EndGlobalSection
+EndGlobal

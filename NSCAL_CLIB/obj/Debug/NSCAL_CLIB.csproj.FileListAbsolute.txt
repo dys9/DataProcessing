@@ -1,0 +1,8 @@
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\bin\Debug\NSCAL_CLIB.dll
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\bin\Debug\NSCAL_CLIB.pdb
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.csproj.CoreCompileInputs.cache
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.dll
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.pdb
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.UserControl1.resources
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.csproj.GenerateResource.cache
+D:\이대현\WORK_SPACE\Project_C#\NSCAL\NSCAL_CLIB\obj\Debug\NSCAL_CLIB.csprojAssemblyReference.cache
