@@ -35,6 +35,14 @@
             this.tbY = new System.Windows.Forms.TextBox();
             this.tbValue = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbL = new System.Windows.Forms.TextBox();
+            this.tbR = new System.Windows.Forms.TextBox();
+            this.tbD = new System.Windows.Forms.TextBox();
+            this.tbU = new System.Windows.Forms.TextBox();
+            this.tbLRstep = new System.Windows.Forms.TextBox();
+            this.tbDUstep = new System.Windows.Forms.TextBox();
+            this.btnAreaModi = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tbPath
@@ -85,21 +93,95 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 62);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(4, 95);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(793, 385);
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBox1.Size = new System.Drawing.Size(793, 355);
             this.textBox1.TabIndex = 4;
+            // 
+            // tbL
+            // 
+            this.tbL.Location = new System.Drawing.Point(4, 65);
+            this.tbL.Name = "tbL";
+            this.tbL.Size = new System.Drawing.Size(100, 24);
+            this.tbL.TabIndex = 5;
+            // 
+            // tbR
+            // 
+            this.tbR.Location = new System.Drawing.Point(110, 64);
+            this.tbR.Name = "tbR";
+            this.tbR.Size = new System.Drawing.Size(100, 24);
+            this.tbR.TabIndex = 6;
+            // 
+            // tbD
+            // 
+            this.tbD.Location = new System.Drawing.Point(218, 64);
+            this.tbD.Name = "tbD";
+            this.tbD.Size = new System.Drawing.Size(100, 24);
+            this.tbD.TabIndex = 7;
+            // 
+            // tbU
+            // 
+            this.tbU.Location = new System.Drawing.Point(324, 64);
+            this.tbU.Name = "tbU";
+            this.tbU.Size = new System.Drawing.Size(100, 24);
+            this.tbU.TabIndex = 8;
+            // 
+            // tbLRstep
+            // 
+            this.tbLRstep.Location = new System.Drawing.Point(430, 64);
+            this.tbLRstep.Name = "tbLRstep";
+            this.tbLRstep.Size = new System.Drawing.Size(100, 24);
+            this.tbLRstep.TabIndex = 9;
+            // 
+            // tbDUstep
+            // 
+            this.tbDUstep.Location = new System.Drawing.Point(536, 64);
+            this.tbDUstep.Name = "tbDUstep";
+            this.tbDUstep.Size = new System.Drawing.Size(100, 24);
+            this.tbDUstep.TabIndex = 10;
+            // 
+            // btnAreaModi
+            // 
+            this.btnAreaModi.Location = new System.Drawing.Point(642, 63);
+            this.btnAreaModi.Name = "btnAreaModi";
+            this.btnAreaModi.Size = new System.Drawing.Size(94, 23);
+            this.btnAreaModi.TabIndex = 11;
+            this.btnAreaModi.Text = "Area Modi";
+            this.btnAreaModi.UseVisualStyleBackColor = true;
+            this.btnAreaModi.Click += new System.EventHandler(this.btnAreaModi_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(322, 32);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(83, 24);
+            this.btnClear.TabIndex = 1;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // UserControl1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAreaModi);
+            this.Controls.Add(this.tbDUstep);
+            this.Controls.Add(this.tbLRstep);
+            this.Controls.Add(this.tbU);
+            this.Controls.Add(this.tbD);
+            this.Controls.Add(this.tbR);
+            this.Controls.Add(this.tbL);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.tbValue);
             this.Controls.Add(this.tbY);
             this.Controls.Add(this.tbX);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.tbPath);
             this.Name = "UserControl1";
@@ -118,5 +200,13 @@
         private System.Windows.Forms.TextBox tbY;
         private System.Windows.Forms.TextBox tbValue;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbL;
+        private System.Windows.Forms.TextBox tbR;
+        private System.Windows.Forms.TextBox tbD;
+        private System.Windows.Forms.TextBox tbU;
+        private System.Windows.Forms.TextBox tbLRstep;
+        private System.Windows.Forms.TextBox tbDUstep;
+        private System.Windows.Forms.Button btnAreaModi;
+        private System.Windows.Forms.Button btnClear;
     }
 }

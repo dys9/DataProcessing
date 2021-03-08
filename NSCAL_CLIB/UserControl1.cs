@@ -13,14 +13,19 @@ namespace NSCAL_CLIB
 {
     public partial class UserControl1 : UserControl
     {
-        private int L, R, U, D, Xmax, Ymax = 0;
-        private double Xstep, Ystep, Flux = 0.0;
-        private double[,] arr;
-
+        private int Xmax, Ymax = 0;
+        private double L, R, U, D, Xstep, Ystep, Flux = 0.0;
+        private double[,] data;
+        private double[,] AreaModi;
 
         public UserControl1()
         {
             InitializeComponent();
+            tbD.Text = "-.5";
+            tbL.Text = "-.5";
+            tbU.Text = ".5";
+            tbR.Text = ".5";
+
         }
 
         private double Bi_Interpolation(double X, double Y)
@@ -32,7 +37,7 @@ namespace NSCAL_CLIB
                 int xi = (int)((X - D) / Xstep);
                 int yi = (int)((Y - L) / Ystep);
 
-                result = (arr[xi, yi]);
+                result = (data[xi, yi]);
             }
             // X 보간
             else if (((X - D) % Xstep) != 0 && ((Y - L) % Ystep) == 0)
@@ -41,17 +46,17 @@ namespace NSCAL_CLIB
                 int ymi = (int)((Y - L) / Ystep);
                 int xMi = xmi + 1;
 
-                double t = (X % Xstep) / Xstep;
+                double t = Math.Abs((X % Xstep) / Xstep);
 
                 if (xmi >= 0 && xmi < Xmax &&
                     ymi >= 0 && ymi < Ymax &&
                     xMi > 0 && xMi < Xmax
                     )
                 {
-                    double valm = arr[xmi, ymi];
-                    double valM = arr[xMi, ymi];
+                    double valm = data[xmi, ymi];
+                    double valM = data[xMi, ymi];
 
-                    result = valm * (1 - t) + t * valM;
+                    result = valM * (1 - t) + t * valm;
                 }
             }
             // Y 보간
@@ -61,20 +66,17 @@ namespace NSCAL_CLIB
                 int ymi = (int)((Y - L) / Ystep);
                 int yMi = ymi + 1;
 
-                double t = ((Y % Ystep) / Ystep);
-
-                MessageBox.Show(xmi.ToString() + "\r\n" + ymi.ToString() + "\r\n" + yMi.ToString() + "\r\n" + Xmax + "\r\n" + Ymax);
+                double t = Math.Abs((Y % Ystep) / Ystep);
 
                 if (xmi >= 0 && xmi < Xmax &&
                     ymi >= 0 && ymi < Ymax &&
                     yMi > 0 && yMi < Ymax)
                 {
-                    MessageBox.Show("hello");
 
-                    double valm = arr[xmi, ymi];
-                    double valM = arr[xmi, yMi];
+                    double valm = data[xmi, ymi];
+                    double valM = data[xmi, yMi];
 
-                    result = valm * (1 - t) + t * valM;
+                    result = valM * (1 - t) + t * valm;
                 }
             }
             // 이중 보간
@@ -91,10 +93,20 @@ namespace NSCAL_CLIB
                      xMi > 0 && xMi < Xmax &&
                      yMi > 0 && yMi < Ymax)
                 {
-                    double valm = arr[xmi, ymi];
-                    double valM = arr[xMi, yMi];
+                    double valA = data[xmi, ymi];
+                    double valB = data[xmi, yMi];
+                    double valC = data[xMi, ymi];
+                    double valD = data[xMi, yMi];
 
-                    result = -999;
+                    double d1 = ((Math.Abs(X) % Xstep) / Xstep);
+                    double d2 = 1 - d1;
+                    double d3 = ((Math.Abs(Y) % Ystep) / Ystep);
+                    double d4 = 1 - d3;
+
+                    double fI = (d1 * valB + d2 * valA) / (d1 + d2);
+                    double fJ = (d1 * valD + d2 * valC) / (d1 + d2);
+
+                    result = (d3 * fJ + d4 * fI) / (d3 + d4);
                 }
             }
             return result;
@@ -127,11 +139,11 @@ namespace NSCAL_CLIB
                             string[] header = line.Split(new char[] { ' ', '\t' });
                             if (header.Length == 7)
                             {
-                                U = Convert.ToInt32(header[0]);
-                                D = Convert.ToInt32(header[1]);
+                                D = Convert.ToDouble(header[0]);
+                                U = Convert.ToDouble(header[1]);
                                 Xstep = Convert.ToDouble(header[2]);
-                                R = Convert.ToInt32(header[3]);
-                                L = Convert.ToInt32(header[4]);
+                                L = Convert.ToDouble(header[3]);
+                                R = Convert.ToDouble(header[4]);
                                 Ystep = Convert.ToDouble(header[5]);
                                 Flux = Convert.ToDouble(header[6]);
                             }
@@ -148,16 +160,18 @@ namespace NSCAL_CLIB
                                 "[Flux : {8}]\r\n\r\n",
                                 Xmax, Ymax, U, D, Xstep, R, L, Ystep, Flux);
 
-                            arr = new double[Xmax, Ymax];
+                            data = new double[Xmax, Ymax];
                         }
 
-                        // Insert Data to Array
+                        // Insert Data to dataay
+                        int cnt = 0;
                         while ((line = SR.ReadLine()) != null)
                         {
                             if (((Xidx < Xmax) && (Yidx < Ymax)))
                             {
                                 textBox1.Text += String.Format("{0,5}", Convert.ToDouble(line));
-                                arr[Xidx, Yidx] = Convert.ToDouble(line);
+                                data[Xidx, Yidx] = Convert.ToDouble(line);
+                                cnt++;
                             }
                             else
                             {
@@ -175,7 +189,7 @@ namespace NSCAL_CLIB
                         }
 
                         // Throw Exception, If header's not match.
-                        if (line == null)
+                        if (cnt != Xmax * Ymax)
                         {
                             throw new Exception();
                         }
@@ -197,10 +211,74 @@ namespace NSCAL_CLIB
             }
         }
 
+        private void btnAreaModi_Click(object sender, EventArgs e)
+        {
+            if (data != null)
+            {
+                double Ln, Rn, Dn, Un, LRstep, DUstep;
+                if ( double.TryParse(tbL.Text, out Ln) &&
+                     double.TryParse(tbR.Text, out Rn) &&
+                     double.TryParse(tbD.Text, out Dn) &&
+                     double.TryParse(tbU.Text, out Un) &&
+                     double.TryParse(tbLRstep.Text, out LRstep) &&
+                     double.TryParse(tbDUstep.Text, out DUstep))
+                {
+                    if (Ln < Rn && Dn < Un && LRstep > 0 && DUstep > 0)
+                    {
+                        int Xmaxn = (int)((Un - Dn) / DUstep) + 1;
+                        int Ymaxn = (int)((Rn - Ln) / LRstep) + 1;
+
+                        textBox1.Text += string.Format("[{0}, {1}], [{2}, {3}, {4}][{5}, {6}, {7}]\r\n", Xmaxn, Ymaxn, Ln, Rn, LRstep, Dn, Un, DUstep);
+
+                        AreaModi = new double[Xmaxn, Ymaxn];
+
+                        for (double i = Dn; i <= Un; i += DUstep)
+                        {
+                            string temp = "";
+                            for (double j = Ln; j <= Rn; j += LRstep)
+                            {
+                                int x = Convert.ToInt32((-Dn + i) / DUstep);
+                                int y = Convert.ToInt32((-Ln + j) / LRstep);
+
+                                AreaModi[x, y] = Bi_Interpolation(i, j);
+                                temp += AreaModi[x, y].ToString("F") + "  ";
+                            }
+                            textBox1.Text += temp + "\r\n";
+                        }
+
+                        textBox1.Text += "##############################################################\r\n";
+                        for (double i = Dn; i <= Un; i += DUstep)
+                        {
+                            string temp = "";
+                            for (double j = Ln; j <= Rn; j += LRstep)
+                            {
+                                int x = Convert.ToInt32((-Dn + i) / DUstep);
+                                int y = Convert.ToInt32((-Ln + j) / LRstep);
+
+                                temp += string.Format("[{0}, {1}] ", x, y);
+                            }
+                            textBox1.Text += temp + "\r\n";
+                        }
+
+                        textBox1.Text += "##############################################################\r\n";
+
+                        for (int i = 0; i < AreaModi.GetLength(0); i++)
+                        {
+                            for (int j = 0; j < AreaModi.GetLength(1); j++)
+                            {
+                                textBox1.Text += AreaModi[i, j].ToString("F") + "  ";
+                            }
+                            textBox1.Text += "\r\n";
+                        }
+                    }
+                }
+            }
+        }
+
         private void tbY_TextChanged(object sender, EventArgs e)
         {
             double X, Y;
-            if (arr != null)
+            if (data != null)
             {
                 if (double.TryParse(tbY.Text, out Y) && double.TryParse(tbX.Text, out X))
                 {
@@ -215,7 +293,7 @@ namespace NSCAL_CLIB
         private void tbX_TextChanged(object sender, EventArgs e)
         {
             double X, Y;
-            if (arr != null)
+            if (data != null)
             {
                 if (double.TryParse(tbY.Text, out Y) && double.TryParse(tbX.Text, out X))
                 {
@@ -226,5 +304,11 @@ namespace NSCAL_CLIB
                 }
             }
         }
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+        }
+
+
     }
 }

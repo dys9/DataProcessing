@@ -35,7 +35,8 @@ namespace NSCAL_WF
             // 
             // userControl11
             // 
-            this.userControl11.Location = new System.Drawing.Point(-1, 1);
+            this.userControl11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControl11.Location = new System.Drawing.Point(0, 0);
             this.userControl11.Name = "userControl11";
             this.userControl11.Size = new System.Drawing.Size(800, 450);
             this.userControl11.TabIndex = 0;
